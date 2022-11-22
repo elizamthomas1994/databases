@@ -50,7 +50,7 @@ Define the attributes of your Model class. You can usually map the table columns
 class Album
 
   # Replace the attributes by your own columns.
-  attr_accessor :album_id, :name, :release_year
+  attr_accessor :album_id, :title, :release_year
 end
 ```
 
@@ -70,7 +70,7 @@ class AlbumRepository
 
   def all
     # Executes the SQL query:
-    # SELECT album_id, name, release_year FROM albums;
+    # SELECT album_id, title, release_year FROM albums;
 
     # Returns an array of Album objects.
   end
@@ -121,5 +121,6 @@ describe AlbumRepository do
 
   # (your tests will go here).
 end
+
 8. Test-drive and implement the Repository class behaviour
 After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
