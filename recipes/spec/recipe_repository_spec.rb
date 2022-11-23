@@ -25,13 +25,26 @@ RSpec.describe RecipeRepository do
 
       expect(recipes[0].id).to eq '1'
       expect(recipes[0].name).to eq 'Salmon en Croute'
-      expect(recipes[0].cooking_time).to eq '60'
-      expect(recipes[0].rating).to eq '10'
+      expect(recipes[0].cooking_time).to eq 60
+      expect(recipes[0].rating).to eq 10
 
       expect(recipes[1].id).to eq '2'
       expect(recipes[1].name).to eq 'Chocolate Cake'
-      expect(recipes[1].cooking_time).to eq '20'
-      expect(recipes[1].rating).to eq '9'
+      expect(recipes[1].cooking_time).to eq 20
+      expect(recipes[1].rating).to eq 9
+    end
+  end
+
+  describe '#find' do
+    it 'returns a single instance of recipe by searching id' do
+      repo = RecipeRepository.new
+      
+      recipe = repo.find(1)
+
+      expect(recipe.id).to eq '1'
+      expect(recipe.name).to eq 'Salmon en Croute'
+      expect(recipe.cooking_time).to eq '60'
+      expect(recipe.rating).to eq '10'
     end
   end
 end
