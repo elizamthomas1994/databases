@@ -74,6 +74,13 @@ class AlbumRepository
 
     # Returns an array of Album objects.
   end
+
+  def find(id)
+    # Executes the SQL query:
+    # SELECT id, name, cohort_name FROM students WHERE id = $1;
+
+    # Returns a single Student object.
+  end
 end
 ```
 
@@ -93,7 +100,18 @@ repo = AlbumRepository.new
 albums = repo.all
 albums.length # => 2
 albums.first.album_id # => '1'
-albums.first.name # => 'Master of Puppets'
+albums.first.title # => 'Master of Puppets'
+
+# 2
+# Get a single student
+
+repo = AlbumRepository.new
+
+album = repo.find(1)
+
+album.id # =>  1
+album.title # =>  'Master of Puppets'
+album.release_year # =>  '1986'
 
 ```
 Encode this example as a test.
