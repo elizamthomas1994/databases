@@ -113,6 +113,20 @@ album.id # =>  1
 album.title # =>  'Master of Puppets'
 album.release_year # =>  '1986'
 
+# 3
+# Creates a new instance of album
+
+repo = AlbumRepository.new
+
+album = Album.new
+album.title = 'Trompe le Monde'
+album.release_year = 1991
+album.artist_id = 1
+
+repo.create(album)
+
+all_albums = repo.all
+
 ```
 Encode this example as a test.
 
