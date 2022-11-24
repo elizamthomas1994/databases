@@ -84,7 +84,8 @@ number_of_views: int
 CREATE TABLE accounts (
   id SERIAL PRIMARY KEY,
   email_address text,
-  username text
+  username text,
+  account_id int
 );
 
 -- Then the table with the foreign key first.
