@@ -3,7 +3,7 @@ require_relative 'account'
 class AccountRepository
   def all
     # Executes the SQL query:
-    sql = 'SELECT id, email_address, username FROM accounts'
+    sql = 'SELECT id, email_address, username, account_id FROM accounts'
     params = []
     result_set = DatabaseConnection.exec_params(sql, params)
 
@@ -16,6 +16,7 @@ class AccountRepository
       account.id = record['id']
       account.email_address = record['email_address']
       account.username = record['username']
+      account.account_id = record['account_id']
 
       accounts << account
     end
@@ -25,7 +26,7 @@ class AccountRepository
 
   def find(id)
     # Executes the SQL query:
-    sql = 'SELECT id, email_address, username FROM accounts WHERE id = $1'
+    sql = 'SELECT id, email_address, username, account_id FROM accounts WHERE id = $1'
     params = [id]
     result_set = DatabaseConnection.exec_params(sql, params)
 
@@ -37,14 +38,15 @@ class AccountRepository
     account.id = record['id']
     account.email_address = record['email_address']
     account.username = record['username']
+    account.account_id = record['account_id']
 
     account
   end
 
   def create(account)
     # Execute the SQL query:
-    sql = 'INSERT INTO accounts (email_address, username) VALUES ($1, $2);'
-    params = [account.email_address, account.username]
+    sql = 'INSERT INTO accounts (email_address, username, account_id) VALUES ($1, $2, $3);'
+    params = [account.email_address, account.username, account.account_id]
     result_set = DatabaseConnection.exec_params(sql, params)
 
     return nil

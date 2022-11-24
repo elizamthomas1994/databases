@@ -9,5 +9,5 @@ TRUNCATE TABLE accounts RESTART IDENTITY CASCADE; -- replace with your own table
 -- Below this line there should only be `INSERT` statements.
 -- Replace these statements with your own seed data.
 
-INSERT INTO accounts (email_address, username) VALUES ('hello@world.com', 'helloworld');
-INSERT INTO accounts (email_address, username) VALUES ('hola@mundo.com', 'holamundo');
+INSERT INTO accounts (email_address, username, account_id) VALUES ('hello@world.com', 'helloworld', 1);
+INSERT INTO accounts (email_address, username, account_id) VALUES ('hola@mundo.com', 'holamundo', 2);
