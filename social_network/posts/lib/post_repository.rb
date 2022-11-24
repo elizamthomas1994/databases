@@ -53,7 +53,7 @@ class PostRepository
    def delete(id)
     # Execute the SQL query:
     sql = 'DELETE FROM posts WHERE id = $1;'
-    params = [1]
+    params = [id]
     result_set = DatabaseConnection.exec_params(sql, params)
 
     return nil
