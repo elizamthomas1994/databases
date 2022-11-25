@@ -22,8 +22,7 @@ class Application
     # and then decide to run the appropriate action
     # or behaviour.
     @io.puts "Welcome to the music library manager!"
-    menu 
-    choice(@io.gets.chomp)
+    menu
   end
 
   def menu
@@ -31,6 +30,7 @@ class Application
     @io.puts "1 - List all albums"
     @io.puts "2 - List all artists"
     @io.puts "Enter your choice:"
+    choice(@io.gets.chomp)
   end
 
   def choice(selection)
@@ -46,6 +46,9 @@ class Application
       artist_repo.each do |artist|
         @io.puts "#{artist.id} - #{artist.name}"
       end
+    else
+      @io.puts "Please enter a valid option:"
+      menu
     end
   end
 end
