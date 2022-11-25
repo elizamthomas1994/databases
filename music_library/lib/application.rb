@@ -1,5 +1,6 @@
 require_relative '../albums/lib/album_repository'
 require_relative '../artists/lib/artist_repository'
+require_relative 'database_connection'
 
 class Application
   # The Application class initializer
@@ -21,28 +22,31 @@ class Application
     # and then decide to run the appropriate action
     # or behaviour.
     @io.puts "Welcome to the music library manager!"
+    menu 
+    choice(@io.gets.chomp)
+  end
+
+  def menu
     @io.puts "What would you like to do?"
     @io.puts "1 - List all albums"
     @io.puts "2 - List all artists"
     @io.puts "Enter your choice:"
+  end
 
-    choice = @io.gets
-
-    if choice == "1"
+  def choice(selection)
+    if selection == "1"
       @io.puts "Here is the list of albums:"
       album_repo = @album_repository.all
       album_repo.each do |album|
         @io.puts "#{album.id} - #{album.title}"
       end
-    elsif choice == "2"
+    elsif selection == "2"
       @io.puts "Here is the list of artists:"
       artist_repo = @artist_repository.all
       artist_repo.each do |artist|
         @io.puts "#{artist.id} - #{artist.name}"
       end
     end
-    # Use `@io.puts` or `@io.gets` to
-    # write output and ask for user input.
   end
 end
 
