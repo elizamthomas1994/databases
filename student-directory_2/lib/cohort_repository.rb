@@ -1,34 +1,36 @@
+require 'cohort'
+require 'student'
+
 class CohortRepository
   def find_with_students(id)
-    sql = 'SELECT cohorts.id,
-                  cohorts.name,
-                  cohorts.genre,
-                  students.id AS student_id,
-                  students.title,
-                  students.release_year
-          FROM cohorts
-          JOIN students ON students.cohort_id = cohorts.id
-          WHERE cohorts.id = $1;'
+    sql = 'SELECT cohorts.id, 
+                  cohorts.cohort_name, 
+                  cohorts.cohort_start_date,
+                  students.id AS student_id, 
+                  students.student_name, 
+                  students.cohort_id
+              FROM cohorts
+              JOIN students ON students.cohort_id = cohorts.id
+              WHERE cohorts.id = $1;'
 
     params = [id]
 
     result = DatabaseConnection.exec_params(sql, params)
 
-    cohort = cohort.new
-
-    cohort.id = result.first['id']
-    cohort.name = result.first['name']
-    cohort.genre = result.first['genre']
+    cohorts = Cohort.new
+    cohorts.id = result.first["id"]
+    cohorts.cohort_name = result.first["cohort_name"]
+    cohorts.cohort_start_date = result.first["cohort_start_date"]
 
     result.each do |record|
       student = Student.new
-      student.id = record['student_id']
-      student.title = record['title']
-      student.release_year = record['release_year']
+      student.id = record["id"]
+      student.student_name = record["student_name"]
+      student.cohort_id = record["cohort_id"]
 
-      cohort.students << student
+      cohorts.students << student
     end
 
-    return cohort
+    return cohorts
   end
 end
