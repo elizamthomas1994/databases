@@ -1,5 +1,5 @@
-require 'cohort'
-require 'student'
+require_relative 'cohort'
+require_relative 'student'
 
 class CohortRepository
   def find_with_students(id)
