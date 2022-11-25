@@ -20,8 +20,18 @@ RSpec.describe Application do
       expect(io).to receive(:puts).with("Enter your choice:")
       expect(io).to receive(:gets).and_return("1")
       expect(io).to receive(:puts).with("Here is the list of albums:")
-      expect(io).to receive(:puts).with("1 - Master of Puppets")
-      expect(io).to receive(:puts).with("2 - Audioslave")
+      expect(io).to receive(:puts).with("1 - Doolittle")
+      expect(io).to receive(:puts).with("2 - Surfer Rosa")
+      expect(io).to receive(:puts).with("3 - Waterloo")
+      expect(io).to receive(:puts).with("4 - Super Trouper")
+      expect(io).to receive(:puts).with("5 - Bossanova")
+      expect(io).to receive(:puts).with("6 - Lover")
+      expect(io).to receive(:puts).with("7 - Folklore")
+      expect(io).to receive(:puts).with("8 - I Put a Spell on You")
+      expect(io).to receive(:puts).with("9 - Baltimore")
+      expect(io).to receive(:puts).with("10 - Here Comes the Sun")
+      expect(io).to receive(:puts).with("11 - Fodder on My Wings")
+      expect(io).to receive(:puts).with("12 - Ring Ring")
 
       app = Application.new('music_library', io, album_repo, artist_repo)
       app.run
@@ -49,8 +59,6 @@ RSpec.describe Application do
       expect(io).to receive(:puts).with("2 - ABBA")
       expect(io).to receive(:puts).with("3 - Taylor Swift")
       expect(io).to receive(:puts).with("4 - Nina Simone")
-      expect(io).to receive(:puts).with("5 - Massive Attack")
-      expect(io).to receive(:puts).with("6 - Metallica")
 
       app = Application.new('music_library', io, artist_repo, artist_repo)
       app.run
